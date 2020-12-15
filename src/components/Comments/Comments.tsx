@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 	},
 	comments: {
 		marginBottom: 10,
-		maxHeight: 700,
+		// maxHeight: 700,
 		overflowY: "auto",
 		overflowX: "hidden",
 		paddingTop: 10,

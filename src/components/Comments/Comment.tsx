@@ -136,7 +136,7 @@ const useStyles = makeStyles({
 		paddingRight: 10,
 		position: "relative",
 		zIndex: 2,
-		background: "#eef2f4",
+		background: "#ffffff",
 		border: "1px solid",
 	},
 	decisionSuccess: {
