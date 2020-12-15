@@ -1,5 +1,5 @@
 import { Button, Typography } from "@material-ui/core";
-import React, { useCallback, useState } from "react";
+import React, { createRef, useCallback, useState } from "react";
 import { RichTextEditor } from "./components/RichTextEditor/RichTextEditor";
 import { makeStyles } from "@material-ui/core/styles";
 import { CommentProps } from "./components/Comments/Comment";
@@ -142,6 +142,8 @@ const App: React.FC = () => {
 	const [forceClean, setForceClean] = useState<number>();
 	const [currentComment, setCurrentComment] = useState<string>();
 
+    const commContainerRef = createRef<HTMLDivElement>();
+
 	const leaveComment = useCallback(() => {
 		if (currentComment) {
 			setComments([
@@ -161,9 +163,13 @@ const App: React.FC = () => {
 			setForceClean(+new Date());
 			setCurrentComment(undefined);
 
-			console.log(currentComment);
+            console.log(currentComment);
+            
+            if (commContainerRef && commContainerRef.current) {
+                commContainerRef.current.scrollTop = 0;
+            }
 		}
-	}, [currentComment, comments]);
+	}, [currentComment, comments, commContainerRef]);
 
 	const [openLayout, setOpenLayout] = useState<boolean>(true);
 	const closeLayout = useCallback(() => setOpenLayout(false), []);
@@ -201,7 +207,7 @@ const App: React.FC = () => {
 					>
 						<TabContent index={0} value={0}>
 							<div className={classes.cardContent}>
-								<div className={classes.cardContentLeft}>
+								<div className={classes.cardContentLeft} ref={commContainerRef}>
 									<div className={classes.formPlaceholder}>
 										Форма редактирования актива
 									</div>
