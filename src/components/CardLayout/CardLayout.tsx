@@ -18,7 +18,8 @@ const useStyles = makeStyles({
 	},
 	cardLayout: {
 		position: "fixed",
-		width: 1400,
+        width: 1400,
+        maxWidth: "100%",
 		height: "100%",
 		right: 0,
 		top: 0,
